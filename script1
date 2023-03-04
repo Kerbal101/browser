@@ -1,0 +1,27 @@
+const webview = document.getElementById("webview");
+const address = document.getElementById("address");
+
+// Navigate to a URL
+function navigate(url) {
+  webview.loadURL(url);
+}
+
+// Handle the Go button click event
+document.getElementById("go").addEventListener("click", () => {
+  navigate(address.value);
+});
+
+// Handle the Back button click event
+document.getElementById("back").addEventListener("click", () => {
+  webview.goBack();
+});
+
+// Handle the Forward button click event
+document.getElementById("forward").addEventListener("click", () => {
+  webview.goForward();
+});
+
+// Update the address bar when the web page changes
+webview.addEventListener("did-stop-loading", () => {
+  address.value = webview.getURL();
+});
